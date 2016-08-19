@@ -1,0 +1,22 @@
+brewコマンドのインストール
+	http://brew.sh/index_ja.html
+
+インストール
+	brew install dfu-util
+
+書き込み
+	dfu-util -a 0 -D /path/to/dfuse-image.dfu
+
+動的ライブラリのパス変更
+	http://moco.sakura.ne.jp/uncategorized/mac-ports-%E3%81%AE%E5%8B%95%E7%9A%84%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E5%86%8D%E9%85%8D%E5%B8%83%E6%96%B9%E6%B3%95/
+	http://qiita.com/itoru257/items/d36b4e3908a39bfbbb18
+	http://steel-wheels-project.hatenablog.com/entry/2015/09/13/223156
+	http://mattintosh.blog.so-net.ne.jp/2012-11-24
+
+	ライブラリの依存関係確認コマンド
+		otool -L dfu-util 
+
+	ライブラリパス変更
+		sudo install_name_tool -change /usr/local/opt/libusb/lib/libusb-1.0.0.dylib @executable_path/../lib/libusb-1.0.0.dylib ./dfu-util
+
+
